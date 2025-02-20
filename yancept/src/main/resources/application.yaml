@@ -23,27 +23,3 @@ springdoc:
 
 server:
   port: 8080
-
-scheduler:
-  icd:
-    cron: "0 0 0 * * *"
-
-async:
-  settings:
-    icd:
-      name: icd
-      corePoolSize: 3
-      maxPoolSize: 3
-      queueCapacity: 100
-
-sources:
-  url:
-    ICDs: https://github.com/ak4nv/mkb10/raw/refs/heads/master/mkb10.csv
-
-batch:
-  icd:
-    size: 500
-
-page:
-  icd:
-    size: 20
