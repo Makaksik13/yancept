@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS something(
+    code VARCHAR(8) PRIMARY KEY,
+    name VARCHAR(512) NOT NULL
+);
