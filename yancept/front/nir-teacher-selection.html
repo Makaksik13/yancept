@@ -1,20 +1,381 @@
-/ HTML для преподавателя
-const teacherHTML = `
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Преподаватель | Управление заявками</title>
-    <script src="script.js" defer></script>
+    <title>Выбор студента на НИР</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-<body>
-    <h1>Ваши студенты</h1>
-    <ul id="studentList"></ul>
-    <h2>Заявки от студентов</h2>
-    <ul id="applicationsList"></ul>
-</body>
-</html>`;
 
-// Экспорт HTML-файлов
-export { studentHTML, teacherHTML };
+<body>
+    <div class="all">
+    <div id="app">
+        <header>
+            <h1>Выбор студента на НИР</h1>
+        </header>
+        <aside class="sc-1ac04790-3 epHEWN">
+            <div class="flex flex-col items-center pt-6 gap-y-6 overflow-hidden"><svg aria-label="Логотип университета"
+                    class="select-none [transition:width,height,0.3s;] flex-shrink-0" color="inherit" width="216"
+                    height="111">
+                    <use href="/sprite.svg#logo-full-blue"></use>
+                </svg>
+                <div class="scroll-menu flex flex-col gap-y-6 w-[inherit] overflow-x-hidden overflow-y-scroll mr-3">
+                    <div class="flex flex-col justify-center items-center gap-y-[1.125rem] w-[inherit]">
+                        <div class="block flex justify-center items-center"><a target="_blank"
+                                class="hover:text-link-hover active:text-link-hover text-link hover:underline active:underline} p-2.5 bg-blue-table rounded-l-lg border border-transparent hover:border-link-hover"
+                                href="https://mail.ssau.ru"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M5.64029 2.70837H14.3605C15.0378 2.70837 15.5842 2.70836 16.0266 2.74451C16.4821 2.78173 16.8823 2.86036 17.2524 3.04898C17.8404 3.34858 18.3185 3.82665 18.6181 4.41465C18.8037 4.77884 18.8828 5.17199 18.9207 5.61838C18.9631 5.73387 18.9695 5.85754 18.9427 5.97392C18.9587 6.35001 18.9587 6.79024 18.9587 7.3066V12.6935C18.9587 13.3708 18.9587 13.9172 18.9226 14.3596C18.8854 14.8151 18.8067 15.2152 18.6181 15.5854C18.3185 16.1734 17.8404 16.6515 17.2524 16.9511C16.8823 17.1397 16.4821 17.2184 16.0266 17.2556C15.5842 17.2917 15.0378 17.2917 14.3605 17.2917H5.64028C4.96292 17.2917 4.41658 17.2917 3.97416 17.2556C3.51863 17.2184 3.11851 17.1397 2.74833 16.9511C2.16032 16.6515 1.68225 16.1734 1.38265 15.5854C1.19403 15.2152 1.1154 14.8151 1.07818 14.3596C1.04203 13.9172 1.04204 13.3708 1.04205 12.6935V7.30662C1.04204 6.79025 1.04204 6.35002 1.05805 5.97392C1.03123 5.85755 1.03764 5.73386 1.08002 5.61838C1.11798 5.17199 1.19709 4.77884 1.38265 4.41465C1.68225 3.82665 2.16032 3.34858 2.74833 3.04898C3.11851 2.86036 3.51863 2.78173 3.97416 2.74451C4.41658 2.70836 4.96293 2.70837 5.64029 2.70837ZM2.29217 7.03387C2.29206 7.12929 2.29205 7.22901 2.29205 7.33337V12.6667C2.29205 13.3771 2.29253 13.8723 2.32403 14.2578C2.35493 14.636 2.41254 14.8533 2.49641 15.0179C2.67617 15.3707 2.96301 15.6576 3.31581 15.8373C3.48041 15.9212 3.69772 15.9788 4.07595 16.0097C4.46147 16.0412 4.95667 16.0417 5.66705 16.0417H14.3337C15.0441 16.0417 15.5393 16.0412 15.9248 16.0097C16.303 15.9788 16.5203 15.9212 16.6849 15.8373C17.0377 15.6576 17.3246 15.3707 17.5043 15.0179C17.5882 14.8533 17.6458 14.636 17.6767 14.2578C17.7082 13.8723 17.7087 13.3771 17.7087 12.6667V7.33337C17.7087 7.22901 17.7087 7.12929 17.7086 7.03387L11.888 11.1083C11.8597 11.1281 11.8318 11.1477 11.8042 11.167C11.3363 11.4952 10.9694 11.7525 10.5547 11.8559C10.1907 11.9466 9.81005 11.9466 9.4461 11.8559C9.03139 11.7525 8.66446 11.4952 8.19659 11.167C8.169 11.1477 8.14106 11.1281 8.11273 11.1083L2.29217 7.03387ZM17.6564 5.5446L11.1712 10.0842C10.5779 10.4996 10.4125 10.6031 10.2523 10.643C10.0869 10.6843 9.91387 10.6843 9.74843 10.643C9.58829 10.6031 9.42289 10.4996 8.82956 10.0842L2.34438 5.5446C2.37761 5.2839 2.42837 5.11568 2.49641 4.98214C2.67617 4.62934 2.96301 4.3425 3.31581 4.16274C3.48041 4.07887 3.69772 4.02126 4.07595 3.99036C4.46147 3.95886 4.95667 3.95837 5.66705 3.95837H14.3337C15.0441 3.95837 15.5393 3.95886 15.9248 3.99036C16.303 4.02126 16.5203 4.07887 16.6849 4.16274C17.0377 4.3425 17.3246 4.62934 17.5043 4.98214C17.5724 5.11568 17.6231 5.2839 17.6564 5.5446Z">
+                                        </path>
+                                    </g>
+                                </svg></a><a target="_blank"
+                                class="hover:text-link-hover active:text-link-hover text-link hover:underline active:underline} p-2.5 bg-blue-table border border-transparent hover:border-link-hover"
+                                href="https://do.ssau.ru/moodle/"><svg width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g stroke="currentColor">
+                                        <path
+                                            d="M6.66699 17.5H13.3337M10.0003 14.1667V17.5M5.66699 14.1667H14.3337C15.7338 14.1667 16.4339 14.1667 16.9686 13.8942C17.439 13.6545 17.8215 13.272 18.0612 12.8016C18.3337 12.2669 18.3337 11.5668 18.3337 10.1667V6.5C18.3337 5.09987 18.3337 4.3998 18.0612 3.86502C17.8215 3.39462 17.439 3.01217 16.9686 2.77248C16.4339 2.5 15.7338 2.5 14.3337 2.5H5.66699C4.26686 2.5 3.5668 2.5 3.03202 2.77248C2.56161 3.01217 2.17916 3.39462 1.93948 3.86502C1.66699 4.3998 1.66699 5.09987 1.66699 6.5V10.1667C1.66699 11.5668 1.66699 12.2669 1.93948 12.8016C2.17916 13.272 2.56161 13.6545 3.03202 13.8942C3.5668 14.1667 4.26686 14.1667 5.66699 14.1667Z"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </g>
+                                </svg></a><a target="_blank"
+                                class="hover:text-link-hover active:text-link-hover text-link hover:underline active:underline} p-2.5 bg-blue-table rounded-r-lg border border-transparent hover:border-link-hover"
+                                href="https://disk.ssau.ru"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.47562 2.55703C8.3342 2.50825 8.1615 2.5001 7.51793 2.5001H4.33268C3.85566 2.5001 3.53548 2.50058 3.28891 2.52073C3.04964 2.54028 2.93524 2.57518 2.85978 2.61363C2.66377 2.7135 2.50442 2.87285 2.40455 3.06886C2.3661 3.14432 2.3312 3.25873 2.31165 3.498C2.2915 3.74456 2.29102 4.06474 2.29102 4.54176V4.58343H9.82141L9.34405 3.6287C9.05624 3.05308 8.9717 2.90225 8.86483 2.79758C8.75453 2.68954 8.62158 2.60737 8.47562 2.55703ZM11.219 4.58343H14.3594C15.0368 4.58342 15.5831 4.58342 16.0256 4.61957C16.4811 4.65679 16.8812 4.73542 17.2514 4.92404C17.8394 5.22364 18.3175 5.7017 18.6171 6.28971C18.8057 6.65989 18.8843 7.06001 18.9215 7.51554C18.9577 7.95796 18.9577 8.5043 18.9577 9.18166V12.9019C18.9577 13.5792 18.9577 14.1256 18.9215 14.568C18.8843 15.0235 18.8057 15.4236 18.6171 15.7938C18.3175 16.3818 17.8394 16.8599 17.2514 17.1595C16.8812 17.3481 16.4811 17.4267 16.0256 17.464C15.5832 17.5001 15.0368 17.5001 14.3595 17.5001H5.63925C4.96189 17.5001 4.41555 17.5001 3.97313 17.464C3.5176 17.4267 3.11748 17.3481 2.7473 17.1595C2.15929 16.8599 1.68123 16.3818 1.38162 15.7938C1.193 15.4236 1.11437 15.0235 1.07715 14.568C1.041 14.1256 1.04101 13.5792 1.04102 12.9019L1.04102 4.5164C1.04101 4.07127 1.041 3.69973 1.0658 3.39621C1.09166 3.07963 1.14759 2.78242 1.29079 2.50137C1.5105 2.07016 1.86108 1.71958 2.29229 1.49987C2.57334 1.35667 2.87055 1.30074 3.18712 1.27488C3.49065 1.25008 3.86219 1.25009 4.30732 1.2501L7.51793 1.2501C7.54842 1.2501 7.57852 1.25007 7.60825 1.25005C8.11769 1.24963 8.51777 1.2493 8.88321 1.37535C9.20433 1.48611 9.49681 1.66687 9.73948 1.90455C10.0157 2.17505 10.1943 2.53304 10.4217 2.98889C10.435 3.01549 10.4484 3.04242 10.4621 3.06969L11.219 4.58343ZM10.8201 5.83343C10.8288 5.83361 10.8375 5.83361 10.8462 5.83343H14.3327C15.0431 5.83343 15.5383 5.83392 15.9238 5.86542C16.302 5.89632 16.5193 5.95393 16.6839 6.03779C17.0367 6.21756 17.3236 6.5044 17.5033 6.8572C17.5872 7.0218 17.6448 7.2391 17.6757 7.61733C17.7072 8.00286 17.7077 8.49805 17.7077 9.20843V12.8751C17.7077 13.5855 17.7072 14.0807 17.6757 14.4662C17.6448 14.8444 17.5872 15.0617 17.5033 15.2263C17.3236 15.5791 17.0367 15.866 16.6839 16.0457C16.5193 16.1296 16.302 16.1872 15.9238 16.2181C15.5383 16.2496 15.0431 16.2501 14.3327 16.2501H5.66602C4.95564 16.2501 4.46044 16.2496 4.07492 16.2181C3.69669 16.1872 3.47938 16.1296 3.31478 16.0457C2.96198 15.866 2.67514 15.5791 2.49538 15.2263C2.41151 15.0617 2.3539 14.8444 2.323 14.4662C2.2915 14.0807 2.29102 13.5855 2.29102 12.8751V5.83343H10.8201Z">
+                                        </path>
+                                    </g>
+                                </svg></a></div>
+                    </div>
+                    <nav class="flex w-full">
+                        <ul class="sc-158e968b-4 fFarbG">
+                            <li class="sc-158e968b-5 bZNSOT"><a class="sc-158e968b-6 dHkyCa" href="ssau.html"><svg
+                                        color="#0D47A1" width="24" height="24">
+                                        <use href="/sprite.svg#home"></use>
+                                    </svg>Главная</a></li>
+                            <li class="sc-158e968b-5 bZNSOT"><a class="sc-158e968b-6 dHkyCa" href="/messenger"><svg
+                                        color="#0D47A1" width="24" height="24">
+                                        <use href="/sprite.svg#send"></use>
+                                    </svg>Мессенджер</a></li>
+                            <li class="sc-158e968b-5 bZNSOT"><a class="sc-158e968b-6 dHkyCa" href="/schedule"><svg
+                                        color="#0D47A1" width="24" height="24">
+                                        <use href="/sprite.svg#appointments"></use>
+                                    </svg>Расписание</a></li>
+                            <li class="sc-158e968b-5 bZNSOT"><a class="sc-158e968b-6 dHkyCa"
+                                    href="/portfolio/resume"><svg color="#0D47A1" width="24" height="24">
+                                        <use href="/sprite.svg#portfolio"></use>
+                                    </svg>Портфолио</a></li>
+                            <li class="sc-158e968b-5 bZNSOT"><a class="sc-158e968b-6 dHkyCa"
+                                    href="/vacancies?type=job"><svg color="#0D47A1" width="24" height="24">
+                                        <use href="/sprite.svg#vacancies"></use>
+                                    </svg>Вакансии</a></li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#globe"></use>
+                                        </svg>Учёба<svg class="group-item__icon" color="#0D47A1" width="24" height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/e-journal/student">Электронный
+                                                журнал</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/approval/student">Согласование
+                                                работ</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/study/intermediate-certification">Промежуточная аттестация</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/study/record-book">Зачетная
+                                                книжка</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/study/current-progress">Текущая
+                                                успеваемость</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/study/work-plan">Рабочий план</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/study/basic-education-plan">Результаты
+                                                освоения ООП</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/study/increased-scholarship">Стипендия</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#mountain"></use>
+                                        </svg>ИОТ<svg class="group-item__icon" color="#0D47A1" width="24" height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_blank"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/cabinet/study/educational-trajectory">Выбор дисциплин</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_blank"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/cabinet/study/educational-route">Индивидуальный маршрут</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_blank"
+                                                class="sc-158e968b-9 eJeMeJ" href="/cabinet/study/change-route">Смена
+                                                ИОТ</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#graduate-cap"></use>
+                                        </svg>Выпускнику<svg class="group-item__icon" color="#0D47A1" width="24"
+                                            height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/bypass-sheets/student">Обходной
+                                                лист</a>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#info"></use>
+                                        </svg>Информация<svg class="group-item__icon" color="#0D47A1" width="24"
+                                            height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/info/news">Новости</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/static-pages/~info~wifi">Wi-Fi</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/static-pages/~info~standard">Стандарты
+                                                организации</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#profile"></use>
+                                        </svg>Профиль<svg class="group-item__icon" color="#0D47A1" width="24"
+                                            height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/profile/about-me/main">О себе</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/personal/edit">Редактировать
+                                                (рус)</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/personal/edit-eng">Редактировать
+                                                (eng)</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/profile/sport-club">Спортклуб</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/personal/profile-student">Анкета
+                                                студента</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/profile/settings">Настройки</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#distance-learning"></use>
+                                        </svg>Дистанционное обучение<svg class="group-item__icon" color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/static-pages/~de~consultations">Ответственные за
+                                                консультирование</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/static-pages/~de~certification">Промежуточная аттестация и прием
+                                                академической задолженности</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/static-pages/~de~online">Провести
+                                                лекцию, вебинар, конференцию</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/static-pages/~de~messenger">Организовать
+                                                групповую работу</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/static-pages/~de~software">Программное
+                                                обеспечение</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#microscope"></use>
+                                        </svg>Наука<svg class="group-item__icon" color="#0D47A1" width="24" height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/research/patents">Патенты</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/research/nics">Договоры по НИР и
+                                                ОКР</a>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#microscope"></use>
+                                        </svg>НИР<svg class="group-item__icon" color="#0D47A1" width="24" height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item">
+                                            <a target="_self" class="sc-158e968b-9 eJeMeJ"
+                                                href="nir-student.html">Выбор преподавателя НИР</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item">
+                                            <a target="_self" class="sc-158e968b-9 eJeMeJ"
+                                                href="nir-teacher-selection.html">Выбор студента на НИР</a>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#publication"></use>
+                                        </svg>Публикации<svg class="group-item__icon" color="#0D47A1" width="24"
+                                            height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/publ/science">Научные публикации</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/publ/benefits">Пособия</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#key"></use>
+                                        </svg>Библиотека<svg class="group-item__icon" color="#0D47A1" width="24"
+                                            height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/library/recommended-literature">Рекомендованная литература</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/library/literature-search">Поиск
+                                                литературы</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/library/bookloan">Книги на руках</a>
+                                        </li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/static-pages/~library~access">Доступ
+                                                к
+                                                ЭБС, ИСС и БД</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#tile"></use>
+                                        </svg>Сервисы<svg class="group-item__icon" color="#0D47A1" width="24"
+                                            height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/service/mutual-settlements">Взаиморасчеты</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ" href="/service/certificate/student">Заказ
+                                                справок</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/static-pages/~services~moodle">Электронное обучение</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/static-pages/~services~hranilische">Облачное хранение</a></li>
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/static-pages/~services~rucontext">Антиплагиат</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li class="sc-158e968b-5 bZNSOT">
+                                <details class="sc-158e968b-7 gzXmkx">
+                                    <summary class="sc-158e968b-8 kFZHhy menu-group__header"><svg color="#0D47A1"
+                                            width="24" height="24">
+                                            <use href="/sprite.svg#calendar-inside-check"></use>
+                                        </svg>Рабочие дни<svg class="group-item__icon" color="#0D47A1" width="24"
+                                            height="24">
+                                            <use href="/sprite.svg#expand-more"></use>
+                                        </svg></summary>
+                                    <ul class="sc-158e968b-4 fFarbG menu-group__list">
+                                        <li class="sc-158e968b-5 dLBnWG menu-group__item"><a target="_self"
+                                                class="sc-158e968b-9 eJeMeJ"
+                                                href="/working-day/business-trips">Командировки</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+        <main>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</div>
+</body>
+
+</html>
