@@ -7,6 +7,7 @@ import com.hakaton.yancept.entity.Teacher;
 import com.hakaton.yancept.exception.NotFoundException;
 import com.hakaton.yancept.repository.RequestRepository;
 import com.hakaton.yancept.service.student.StudentService;
+import com.hakaton.yancept.service.teacher.TeacherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.util.List;
 public class RequestServiceImpl implements RequestService{
     private final RequestRepository requestRepository;
     private final StudentService studentService;
+    private  final TeacherService teacherService;
 
     @Override
     public List<Request> getAllByRequesterId(long requesterId) {
@@ -64,8 +66,19 @@ public class RequestServiceImpl implements RequestService{
     }
 
     @Override
-    public Request createRequest(Request request) {
-        return requestRepository.save(request);
+    public Request createRequest(long teacherId, long studentId, String desc) {
+        Request newRequest = new Request();
+        newRequest.setDescription(desc);
+
+        Student student = studentService.getStudentById(studentId);
+
+        Teacher teacher = teacherService.findById(teacherId);
+
+        newRequest.setStudent(student);
+        newRequest.setTeacher(teacher);
+        newRequest.setStatus(Status.IN_PROCESS);
+
+        return requestRepository.save(newRequest);
     }
 
     @Override

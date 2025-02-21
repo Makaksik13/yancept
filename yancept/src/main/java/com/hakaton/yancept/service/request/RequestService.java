@@ -24,7 +24,7 @@ public interface RequestService {
 
     LocalDateTime getCreatedAtById(long requestId);
 
-    Request createRequest(Request request);
+    Request createRequest(long teacherId, long studentId, String desc);
 
     Request approveRequest(long requestId);
 

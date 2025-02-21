@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/student")
@@ -19,5 +21,11 @@ public class StudentController {
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable Long id){
         return studentService.getStudentById(id);
+    }
+
+    @GetMapping("/accepted/teacher/{id}")
+    @Operation(summary = "получение всех принятых студентов по id преподавателя")
+    public List<Student> getAllStudentsByMentorId(@PathVariable Long id){
+        return studentService.getAllStudentsByMentorId(id);
     }
 }

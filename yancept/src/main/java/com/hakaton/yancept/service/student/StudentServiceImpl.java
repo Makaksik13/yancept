@@ -6,6 +6,8 @@ import com.hakaton.yancept.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
@@ -19,5 +21,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student save(Student student){
         return  studentRepository.save(student);
+    }
+
+    @Override
+    public List<Student> getAllStudentsByMentorId(long mentorId) {
+        return studentRepository.getStudentsByMentorId(mentorId);
     }
 }

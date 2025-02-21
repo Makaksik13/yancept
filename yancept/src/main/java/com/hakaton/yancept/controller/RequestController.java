@@ -61,11 +61,11 @@ public class RequestController {
         return requestService.getCreatedAtById(id);
     }
 
-    @PostMapping
+    @PostMapping("/student/{studentId}/teacher/{teacherId}")
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "создание заявки")
-    public Request createRequest(@PathVariable Request request){
-        return requestService.createRequest(request);
+    @Operation(summary = "создание заявки у студента с studentId и преподавателя с teacherId")
+    public Request createRequest(@RequestBody String desc, @PathVariable Long studentId, @PathVariable Long teacherId){
+        return requestService.createRequest(teacherId, studentId, desc);
     }
 
     @PutMapping("/accept/{id}")
