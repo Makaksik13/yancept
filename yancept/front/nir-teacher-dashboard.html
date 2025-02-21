@@ -1,0 +1,21 @@
+const studentHTML = `
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студент | Выбор преподавателя</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Выберите преподавателя для НИР</h1>
+    <ul id="teacherList"></ul>
+    <div id="teacherModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="teacherDetails"></div>
+            <button id="applyButton">Подать заявку</button>
+        </div>
+    </div>
+</body>
+</html>`;
