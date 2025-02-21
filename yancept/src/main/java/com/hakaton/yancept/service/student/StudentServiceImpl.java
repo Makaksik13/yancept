@@ -3,15 +3,13 @@ package com.hakaton.yancept.service.student;
 import com.hakaton.yancept.entity.Student;
 import com.hakaton.yancept.exception.NotFoundException;
 import com.hakaton.yancept.repository.StudentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
-
-    public StudentServiceImpl(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
 
     @Override
     public Student getStudentById(long studentId) {

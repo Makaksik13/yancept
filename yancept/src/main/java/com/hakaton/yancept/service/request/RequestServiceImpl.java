@@ -17,8 +17,13 @@ public class RequestServiceImpl implements RequestService{
     private final RequestRepository requestRepository;
 
     @Override
-    public List<Request> getAll() {
-        return requestRepository.findAll();
+    public List<Request> getAllByRequesterId(long requesterId) {
+        return requestRepository.getAllByRequesterId(requesterId);
+    }
+
+    @Override
+    public List<Request> getAllByReceiverId(long receiverId) {
+        return requestRepository.getAllByReceiverId(receiverId);
     }
 
     @Override
@@ -36,24 +41,29 @@ public class RequestServiceImpl implements RequestService{
     public Teacher getTeacherById(long requestId) {
         return findById(requestId).getTeacher();
     }
+
     @Override
     public String getDescriptionById(long requestId) {
-        return findById(requestId).getDescription();
+        return requestRepository.getDescriptionById(requestId)
+                .orElseThrow(() -> new NotFoundException(String.format("Request with id %s not found", requestId)));
     }
 
     @Override
     public boolean isActiveById(long requestId) {
-        return findById(requestId).isActive();
+        return requestRepository.isActiveById(requestId)
+                .orElseThrow(() -> new NotFoundException(String.format("Request with id %s not found", requestId)));
     }
 
     @Override
     public String getRejectionReasonById(long requestId) {
-        return findById(requestId).getRejectionReason();
+        return requestRepository.getRejectionReasonById(requestId)
+                .orElseThrow(() -> new NotFoundException(String.format("Request with id %s not found", requestId)));
     }
 
     @Override
     public LocalDateTime getCreatedAtById(long requestId) {
-        return findById(requestId).getCreatedAt();
+        return requestRepository.getCreatedAtById(requestId)
+                .orElseThrow(() -> new NotFoundException(String.format("Request with id %s not found", requestId)));
     }
 
     @Override

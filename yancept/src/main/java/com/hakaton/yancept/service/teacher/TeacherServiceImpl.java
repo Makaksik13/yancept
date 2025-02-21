@@ -33,6 +33,4 @@ public class TeacherServiceImpl implements TeacherService{
     public Teacher save(Teacher teacher) {
         return teacherRepository.save(teacher);
     }
-
-
 }

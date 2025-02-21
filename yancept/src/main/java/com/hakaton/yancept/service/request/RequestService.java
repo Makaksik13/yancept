@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface RequestService {
-    List<Request> getAll();
+    List<Request> getAllByRequesterId(long requesterId);
+
+    List<Request> getAllByReceiverId(long receiverId);
 
     Request findById(long requestId);
 
