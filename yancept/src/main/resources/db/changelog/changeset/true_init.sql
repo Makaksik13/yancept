@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS something;
-
 CREATE TABLE IF NOT EXISTS students (
     id              bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY UNIQUE,
     first_name      varchar(64) NOT NULL,
