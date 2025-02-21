@@ -16,4 +16,8 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findById(studentId).
                 orElseThrow(() -> new NotFoundException(String.format("Student with id %s not found", studentId)));
     }
+    @Override
+    public Student save(Student student){
+        return  studentRepository.save(student);
+    }
 }

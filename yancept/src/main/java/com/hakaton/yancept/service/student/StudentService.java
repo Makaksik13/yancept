@@ -6,6 +6,7 @@ import com.hakaton.yancept.entity.Teacher;
 import java.util.List;
 
 public interface StudentService {
-    public Student getStudentById(long studentId);
+    Student getStudentById(long studentId);
 
+    Student save(Student student);
 }
