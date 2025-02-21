@@ -18,12 +18,12 @@ public class RequestServiceImpl implements RequestService{
 
     @Override
     public List<Request> getAllByRequesterId(long requesterId) {
-        return requestRepository.getAllByRequesterId(requesterId);
+        return requestRepository.getAllByStudentId(requesterId);
     }
 
     @Override
     public List<Request> getAllByReceiverId(long receiverId) {
-        return requestRepository.getAllByReceiverId(receiverId);
+        return requestRepository.getAllByTeacherId(receiverId);
     }
 
     @Override

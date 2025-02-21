@@ -11,6 +11,6 @@ import java.util.Optional;
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
-    @Query(value = "SELECT t.link FROM Teacher t WHERE t.id = :id")
+    @Query(value = "SELECT t.linkToProfile FROM Teacher t WHERE t.id = :id")
     Optional<String> findLinkById(@Param("id") Long id);
 }

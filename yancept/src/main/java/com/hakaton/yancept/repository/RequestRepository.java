@@ -25,7 +25,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     @Query(value = "SELECT r.active FROM Request r WHERE r.id = :id")
     Optional<Boolean> isActiveById(@Param("id") Long id);
 
-    List<Request> getAllByRequesterId(long requesterId);
+    List<Request> getAllByStudentId(long requesterId);
 
-    List<Request> getAllByReceiverId(long receiverId);
+    List<Request> getAllByTeacherId(long receiverId);
 }
