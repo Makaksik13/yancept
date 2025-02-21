@@ -11,4 +11,6 @@ public interface TeacherService {
     Teacher save(Teacher teacher);
 
     List<Teacher> getAll();
+
+    String getTeacherLinkById(long teacherId);
 }
