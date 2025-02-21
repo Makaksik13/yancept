@@ -25,4 +25,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     List<Request> getAllByStudentId(long requesterId);
 
     List<Request> getAllByTeacherId(long receiverId);
+
+    @Query("SELECT r.student FROM Request r WHERE r.teacher = :teacherId AND r.status = 0")
+    List<Long> getIdsInProcessStudentByTeacherId(long teacherId);
 }
