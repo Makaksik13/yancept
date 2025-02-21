@@ -25,11 +25,11 @@ VALUES
     ('php', 'description', 3, CURRENT_TIMESTAMP),
     ('history', 'description', 4, CURRENT_TIMESTAMP);
 
-INSERT INTO requests (description, requester_id, receiver_id, is_accepted, created_at)
+INSERT INTO requests (description, requester_id, receiver_id, created_at)
 VALUES
-    ('description', 1, 1, false, CURRENT_TIMESTAMP),
-    ('description', 1, 2, false, CURRENT_TIMESTAMP),
-    ('description', 2, 2, false, CURRENT_TIMESTAMP),
-    ('description', 3, 3, false, CURRENT_TIMESTAMP),
-    ('description', 3, 4, false, CURRENT_TIMESTAMP),
-    ('description', 4, 5, false, CURRENT_TIMESTAMP);
+    ('description', 1, 1, CURRENT_TIMESTAMP),
+    ('description', 1, 2, CURRENT_TIMESTAMP),
+    ('description', 2, 2, CURRENT_TIMESTAMP),
+    ('description', 3, 3, CURRENT_TIMESTAMP),
+    ('description', 3, 4, CURRENT_TIMESTAMP),
+    ('description', 4, 5, CURRENT_TIMESTAMP);

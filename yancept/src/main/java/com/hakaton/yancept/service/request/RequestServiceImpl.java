@@ -52,12 +52,6 @@ public class RequestServiceImpl implements RequestService{
     }
 
     @Override
-    public boolean isAcceptedById(long requestId) {
-        return requestRepository.isActiveById(requestId)
-                .orElseThrow(() -> new NotFoundException(String.format("Request with id %s not found", requestId)));
-    }
-
-    @Override
     public String getRejectionReasonById(long requestId) {
         return requestRepository.getRejectionReasonById(requestId)
                 .orElseThrow(() -> new NotFoundException(String.format("Request with id %s not found", requestId)));

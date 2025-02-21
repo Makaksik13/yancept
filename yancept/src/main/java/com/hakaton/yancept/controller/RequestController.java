@@ -47,11 +47,6 @@ public class RequestController {
         return requestService.getTeacherById(id);
     }
 
-    @GetMapping("active/{id}")
-    public boolean isAcceptedById(@PathVariable Long id){
-        return requestService.isAcceptedById(id);
-    }
-
     @GetMapping("/reaction/{id}")
     public String getRejectionReasonById(@PathVariable Long id){
         return requestService.getRejectionReasonById(id);

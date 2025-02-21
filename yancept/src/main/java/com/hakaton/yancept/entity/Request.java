@@ -42,7 +42,7 @@ public class Request {
     private String description;
 
     @Column(name = "isAccepted", nullable = false)
-    private boolean isAccepted;
+    private Status status;
 
     @Column(name = "rejection_reason", length = 4096)
     private String rejectionReason;

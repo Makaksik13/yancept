@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS requests (
     description         varchar(4096) NOT NULL,
     requester_id        bigint NOT NULL,
     receiver_id         bigint NOT NULL,
-    is_accepted         boolean DEFAULT false NOT NULL,
+    is_accepted         smallint DEFAULT 0 NOT NULL,
     rejection_reason    varchar(4096),
     created_at          timestamptz DEFAULT current_timestamp,
 

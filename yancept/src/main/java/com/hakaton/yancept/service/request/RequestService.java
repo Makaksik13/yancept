@@ -20,8 +20,6 @@ public interface RequestService {
 
     String getDescriptionById(long requestId);
 
-    boolean isAcceptedById(long requestId);
-
     String getRejectionReasonById(long requestId);
 
     LocalDateTime getCreatedAtById(long requestId);
