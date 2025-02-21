@@ -5,14 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @Builder
@@ -32,6 +29,9 @@ public class Student {
     @Column(name = "second_name", length = 64, nullable = false)
     private String secondName;
 
+    @Column(name = "course_name", length = 128)
+    private String courseName;
+
     @Column(name = "patronymic", length = 64, nullable = false)
     private String patronymic;
 
@@ -40,9 +40,4 @@ public class Student {
 
     @Column(name = "mentor_id")
     private Long mentorId;
-
-    @OneToMany(mappedBy = "student")
-    private List<Request> requests;
-
-
 }

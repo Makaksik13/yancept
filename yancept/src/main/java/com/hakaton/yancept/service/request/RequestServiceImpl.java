@@ -5,6 +5,7 @@ import com.hakaton.yancept.entity.Student;
 import com.hakaton.yancept.entity.Teacher;
 import com.hakaton.yancept.exception.NotFoundException;
 import com.hakaton.yancept.repository.RequestRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +17,13 @@ import java.util.List;
 public class RequestServiceImpl implements RequestService{
     private final RequestRepository requestRepository;
 
+    @Operation(summary = "Получение всех запросов студента по его id")
     @Override
     public List<Request> getAllByRequesterId(long requesterId) {
         return requestRepository.getAllByStudentId(requesterId);
     }
 
+    @Operation(summary = "Получение всех запросов преподавателя по его id")
     @Override
     public List<Request> getAllByReceiverId(long receiverId) {
         return requestRepository.getAllByTeacherId(receiverId);
@@ -49,7 +52,7 @@ public class RequestServiceImpl implements RequestService{
     }
 
     @Override
-    public boolean isActiveById(long requestId) {
+    public boolean isAcceptedById(long requestId) {
         return requestRepository.isActiveById(requestId)
                 .orElseThrow(() -> new NotFoundException(String.format("Request with id %s not found", requestId)));
     }

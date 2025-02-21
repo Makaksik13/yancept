@@ -5,3 +5,5 @@ databaseChangeLog:
       file: db/changelog/changeset/true_init.sql
   - include:
       file: db/changelog/changeset/insert_entities.sql
+  - include:
+      file: db/changelog/changeset/add_constraint.sql

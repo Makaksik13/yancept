@@ -20,7 +20,7 @@ public interface RequestService {
 
     String getDescriptionById(long requestId);
 
-    boolean isActiveById(long requestId);
+    boolean isAcceptedById(long requestId);
 
     String getRejectionReasonById(long requestId);
 

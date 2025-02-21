@@ -48,8 +48,8 @@ public class RequestController {
     }
 
     @GetMapping("active/{id}")
-    public boolean isActiveById(@PathVariable Long id){
-        return requestService.isActiveById(id);
+    public boolean isAcceptedById(@PathVariable Long id){
+        return requestService.isAcceptedById(id);
     }
 
     @GetMapping("/reaction/{id}")
