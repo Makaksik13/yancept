@@ -6,12 +6,7 @@ import com.hakaton.yancept.entity.Teacher;
 import com.hakaton.yancept.service.request.RequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -62,4 +57,15 @@ public class RequestController {
     public Request createRequest(@PathVariable Request request){
         return requestService.createRequest(request);
     }
+
+    @PutMapping("/accept/{id}")
+    public Request approveRequest(@PathVariable Long id){
+        return requestService.approveRequest(id);
+    }
+
+    @PutMapping("/reject/{id}")
+    public Request rejectRequest(@RequestBody(required = false) String message, @PathVariable Long id){
+        return requestService.rejectRequest(id, message);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.hakaton.yancept.service.request;
 
 import com.hakaton.yancept.entity.Request;
+import com.hakaton.yancept.entity.Status;
 import com.hakaton.yancept.entity.Student;
 import com.hakaton.yancept.entity.Teacher;
 import com.hakaton.yancept.exception.NotFoundException;
@@ -67,4 +68,20 @@ public class RequestServiceImpl implements RequestService{
     public Request createRequest(Request request) {
         return requestRepository.save(request);
     }
+
+    @Override
+    public Request approveRequest(long requestId) {
+        Request approveRequest = findById(requestId);
+        approveRequest.setStatus(Status.ACCEPTED);
+        return requestRepository.save(approveRequest);
+    }
+
+    @Override
+    public Request rejectRequest(long requestId, String rejectMessage) {
+        Request rejectRequest = findById(requestId);
+        rejectRequest.setStatus(Status.REJECT);
+        rejectRequest.setRejectionReason(rejectMessage);
+        return requestRepository.save(rejectRequest);
+    }
+
 }

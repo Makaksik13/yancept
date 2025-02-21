@@ -25,4 +25,8 @@ public interface RequestService {
     LocalDateTime getCreatedAtById(long requestId);
 
     Request createRequest(Request request);
+
+    Request approveRequest(long requestId);
+
+    Request rejectRequest(long requestId, String rejectMessage);
 }
