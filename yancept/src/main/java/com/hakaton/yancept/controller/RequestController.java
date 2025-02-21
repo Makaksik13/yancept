@@ -5,10 +5,8 @@ import com.hakaton.yancept.entity.Student;
 import com.hakaton.yancept.entity.Teacher;
 import com.hakaton.yancept.service.request.RequestService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -52,5 +50,11 @@ public class RequestController {
     @GetMapping("/createdAt/{id}")
     public LocalDateTime getCreatedAt(@PathVariable Long id){
         return requestService.getCreatedAtById(id);
+    }
+
+    @PostMapping("/create-request")
+    public ResponseEntity<String> createRequest(@PathVariable Request request){
+        requestService.createRequest(request);
+        return ResponseEntity.ok("Request create successfully");
     }
 }

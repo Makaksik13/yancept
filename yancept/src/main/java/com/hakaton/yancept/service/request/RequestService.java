@@ -23,4 +23,6 @@ public interface RequestService {
     String getRejectionReasonById(long requestId);
 
     LocalDateTime getCreatedAtById(long requestId);
+
+    Request createRequest(Request request);
 }

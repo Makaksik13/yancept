@@ -55,4 +55,9 @@ public class RequestServiceImpl implements RequestService{
     public LocalDateTime getCreatedAtById(long requestId) {
         return findById(requestId).getCreatedAt();
     }
+
+    @Override
+    public Request createRequest(Request request) {
+        return requestRepository.save(request);
+    }
 }
