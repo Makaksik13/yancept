@@ -29,4 +29,6 @@ public interface RequestService {
     Request approveRequest(long requestId);
 
     Request rejectRequest(long requestId, String rejectMessage);
+
+    void deleteRequest(long requestId);
 }

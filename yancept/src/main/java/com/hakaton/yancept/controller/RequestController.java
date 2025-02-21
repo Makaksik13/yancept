@@ -1,6 +1,7 @@
 package com.hakaton.yancept.controller;
 
 import com.hakaton.yancept.entity.Request;
+import com.hakaton.yancept.entity.Status;
 import com.hakaton.yancept.entity.Student;
 import com.hakaton.yancept.entity.Teacher;
 import com.hakaton.yancept.service.request.RequestService;
@@ -68,4 +69,12 @@ public class RequestController {
         return requestService.rejectRequest(id, message);
     }
 
+    @DeleteMapping("/{id}")
+    public String deleteRequest(@PathVariable Long id){
+        if(requestService.findById(id).getStatus() == Status.ACCEPTED){
+            return "Accepted request cannot be deleted";
+        }
+        requestService.deleteRequest(id);
+        return "Delete successfully";
+    }
 }

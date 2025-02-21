@@ -84,4 +84,9 @@ public class RequestServiceImpl implements RequestService{
         return requestRepository.save(rejectRequest);
     }
 
+    @Override
+    public void deleteRequest(long requestId) {
+        requestRepository.deleteById(requestId);
+    }
+
 }
