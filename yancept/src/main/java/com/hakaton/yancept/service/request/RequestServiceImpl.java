@@ -7,7 +7,6 @@ import com.hakaton.yancept.entity.Teacher;
 import com.hakaton.yancept.exception.NotFoundException;
 import com.hakaton.yancept.repository.RequestRepository;
 import com.hakaton.yancept.service.student.StudentService;
-import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +19,11 @@ public class RequestServiceImpl implements RequestService{
     private final RequestRepository requestRepository;
     private final StudentService studentService;
 
-    @Operation(summary = "Получение всех запросов студента по его id")
     @Override
     public List<Request> getAllByRequesterId(long requesterId) {
         return requestRepository.getAllByStudentId(requesterId);
     }
 
-    @Operation(summary = "Получение всех запросов преподавателя по его id")
     @Override
     public List<Request> getAllByReceiverId(long receiverId) {
         return requestRepository.getAllByTeacherId(receiverId);
