@@ -1,6 +1,7 @@
 package com.hakaton.yancept.repository;
 
 import com.hakaton.yancept.entity.Request;
+import com.hakaton.yancept.entity.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Stack;
 
 @Repository
 public interface RequestRepository extends JpaRepository<Request, Long> {
@@ -26,6 +28,6 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
     List<Request> getAllByTeacherId(long receiverId);
 
-    @Query("SELECT r.student FROM Request r WHERE r.teacher = :teacherId AND r.status = 0")
-    List<Long> getIdsInProcessStudentByTeacherId(long teacherId);
+    @Query("SELECT r.student.id FROM Request r WHERE r.teacher.id = :teacherId AND r.status = :status")
+    List<Long> getStudentIdsByTeacherIdAndStatus(@Param("teacherId")long teacherId, @Param("status")Status status);
 }

@@ -10,5 +10,7 @@ public interface StudentService {
 
     Student save(Student student);
 
-    List<Student> getAllStudentsByMentorId(long mentorId);
+    List<Student> getAllAcceptedStudentsByMentorId(long mentorId);
+
+    List<Student> findAllByIds(List<Long> ids);
 }

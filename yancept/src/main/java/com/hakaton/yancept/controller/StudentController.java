@@ -25,7 +25,7 @@ public class StudentController {
 
     @GetMapping("/accepted/teacher/{id}")
     @Operation(summary = "получение всех принятых студентов по id преподавателя")
-    public List<Student> getAllStudentsByMentorId(@PathVariable Long id){
-        return studentService.getAllStudentsByMentorId(id);
+    public List<Student> getAllAcceptedStudentsByMentorId(@PathVariable Long id){
+        return studentService.getAllAcceptedStudentsByMentorId(id);
     }
 }

@@ -106,4 +106,10 @@ public class RequestServiceImpl implements RequestService{
         requestRepository.deleteById(requestId);
     }
 
+    @Override
+    public List<Student> getAllStudentsInProcessByTeacherId(long teacherId) {
+        List<Long> studentsInProcessId = requestRepository.getStudentIdsByTeacherIdAndStatus(teacherId, Status.IN_PROCESS);
+        return studentService.findAllByIds(studentsInProcessId);
+    }
+
 }

@@ -24,7 +24,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getAllStudentsByMentorId(long mentorId) {
+    public List<Student> getAllAcceptedStudentsByMentorId(long mentorId) {
         return studentRepository.getStudentsByMentorId(mentorId);
+    }
+
+    @Override
+    public List<Student> findAllByIds(List<Long> ids) {
+        return studentRepository.findAllById(ids);
     }
 }

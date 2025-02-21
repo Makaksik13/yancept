@@ -31,4 +31,6 @@ public interface RequestService {
     Request rejectRequest(long requestId, String rejectMessage);
 
     void deleteRequest(long requestId);
+
+    List<Student> getAllStudentsInProcessByTeacherId(long teacherId);
 }

@@ -89,4 +89,10 @@ public class RequestController {
         requestService.deleteRequest(id);
         return "Delete successfully";
     }
+
+    @GetMapping("/in-process/teacher/{id}")
+    @Operation(summary = "получение всех ожидающих студентов по id преподавателя")
+    public List<Student> getAllStudentsInProcessByTeacherId(@PathVariable Long id){
+        return requestService.getAllStudentsInProcessByTeacherId(id);
+    }
 }
