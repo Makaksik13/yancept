@@ -23,7 +23,7 @@ public class TeacherController {
 
     @GetMapping("/link/{id}")
     public String getLinkById(@PathVariable Long id){
-        return Long.toString(id);
+        return teacherService.getTeacherLinkById(id);
     }
 
     @GetMapping("/{id}")
