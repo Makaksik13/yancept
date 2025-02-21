@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/changeset/init.sql
   - include:
       file: db/changelog/changeset/true_init.sql
+  - include:
+      file: db/changelog/changeset/insert_entities.sql

@@ -19,6 +19,11 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
+    public String getTeacherLinkById(long teacherId) {
+        return teacherRepository.findLinkById(teacherId).get();
+    }
+
+    @Override
     public Teacher findById(long teacherId) {
         return teacherRepository.findById(teacherId)
                 .orElseThrow(() -> new NotFoundException(String.format("Teacher with id %s not found", teacherId)));
