@@ -19,8 +19,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "students")
-public class Student {
+@Table(name = "teachers")
+public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,14 +35,15 @@ public class Student {
     @Column(name = "patronymic", length = 64, nullable = false)
     private String patronymic;
 
+    @Column(name = "link_to_profile", length = 64, nullable = false)
+    private String linkToProfile;
+
     @Column(name = "about_me", length = 4096)
     private String description;
 
-    @Column(name = "mentor_id")
-    private Long mentorId;
-
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "teacher")
     private List<Request> requests;
 
-
+    @OneToMany(mappedBy = "teacher")
+    private List<Project> projects;
 }
